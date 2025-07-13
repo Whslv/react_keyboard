@@ -1,17 +1,17 @@
-import { event } from 'cypress/types/jquery';
 import React, { useEffect, useState } from 'react';
 
 export const App: React.FC = () => {
   const [key, setKey] = useState('');
 
   useEffect(() => {
-    const handlKeyPress = (event: React.KeyboardEvent) => {
-      setKey(event.key);
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+      setKey(e.key);
     };
-    document.addEventListener('keyup', handlKeyPress);
+
+    addEventListener('keyup', handleKeyPress);
 
     return () => {
-      document.removeEventListener('keyup', handlKeyPress);
+      removeEventListener('keyup', handleKeyPress);
     };
   }, []);
 
